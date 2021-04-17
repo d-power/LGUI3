@@ -1,0 +1,71 @@
+2021-04-17:
+1. 增加 config/env.lua 中 cache_max_size 配置。
+2. 增加 img 控件属性，用于只显示图片的部分区域。
+3. 增加 text 控件属性，用于设置控件高度。
+4. 增加 list 控件属性，用于显示控件到达最高或最低时的动画效果。
+5. 增加 aimg 控件，使用多张图片达到显示动图的效果。
+6. lgui_push_table 增加将数组压栈。将 key 设置为 0 即可.
+7. 
+1. 处理已知BUG
+
+2021-03-27:
+1. 增加btn控件的res_long属性, 为长按时显示的图片效果
+2. 增加swiper控件的mode属性, 增加循环模式。值参考:utils/swiper.lua.
+3. 修改swiper控件触发方式, 只有change回调返回选中成员的编号，其他事件不返回成员编号，只返回事件
+4. 修复若干BUG
+
+2021-02-28:
+1. 添加控件 combobox。详情请查看文档。
+2. 处理lgui_push_table函数中value_type为LUA_TSTRING时，value传数组程序崩溃的问题。
+   当value_type为LUA_TSTRING时, value不需要对字符串或数组的地址取指针,直接复制即可。其他类型依然需要取地址
+   /* example:
+   ** LGUI_LUA_API int test_push(lua_State *L)
+   ** {
+   **    lgui_table_map_s map[4];
+   **    char *value1 = "value1";
+   **    char value2[] = "value2";
+   **    int  value3 = 3;
+   **    map[0].key = (int)"key1";
+   **    map[0].value = value1;             /* string 类型不用取址 */
+   **    map[0].value_type = LUA_TSTRING;
+   **    map[1].key = (int)"key2";
+   **    map[1].value = value2;             /* string 类型不用取址 */
+   **    map[1].value_type = LUA_TSTRING;
+   **    map[2].key = (int)"key3";
+   **    map[2].value = (char *)&value3;    /* number 类型需要取址 */
+   **    map[2].value_type = LUA_TNUMBER;
+   **    map[3].value_type = LUA_TNONE;
+   **    lgui_push_table(L, map);
+   **    return 1;
+   ** }
+   */
+3. 增加控件 drawer。
+4. 修复已知BUG
+
+2021-02-06:
+1. 增加文本重新着色功能. 例如: "Write a \x1b0000ff blue\x1b word"中blue文本将为蓝色.
+   提供 get_recolor_str 函数，实现文本重新着色的字符拼接。
+   注: 文本重新作色只能在单行进行。多行文本只着色开始的一行。支持的控件为 text, list。不支持设置alpha值。重新着色的alpha为view中设置的alpha。
+       重新着色的文本内部不能再次重新着色。例如:"\x1bff0000 Write a \x1b0000ff blue\x1b word\x1b",这样的方式是不允许的
+2. 增加common界面特性, 详情请查看文档
+3. 修复已知BUG
+
+2021-01-31:
+1. roller、btnm控件的up事件不再有返回值，只有change事件有返回值
+2. list 响应事件更改, up事件返回值为点击按键响应, change 事件响应返回值为当前list的滑动位置
+3. list 控件增加 slidepos 属性，设置list初始滑动位置
+4. 解决使用相对位置的控件，set_data之后位置更改的问题
+5. 修复一些问题
+6. 修改控件演示示例
+
+2021-01-24:
+1. 处理 blank 与 btn 控件在page滑动不灵敏问题
+2. page 增加round属性设置圆角
+3. 添加chart控件
+4. 解决一些问题
+
+2021-01-16:
+1. page、list、tab 增加 c_bar 设置右侧以及底部的滚动条颜色,默认不显示
+2. 优化图片缩放方案,将图片缩数据加入cache方案
+3. 增加 env.ttf_cache_num 配置,用于设置ttf对象缓存的最大数量
+4. 修复已知BUG
