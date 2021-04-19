@@ -2,6 +2,7 @@
 
 <!-- code_chunk_output -->
 
+- [零、下载说明:](#零-下载说明)
 - [一、框架简介](#一-框架简介)
 - [二、目录结构](#二-目录结构)
 - [三、基本概念](#三-基本概念)
@@ -126,6 +127,11 @@ w:331},"È":{d:"49,-160v1,-4,-10,-9,-15,-8v-15,-35,32,-30,57,-31r142,-8v2,1,30,7
 <div style="page-break-after: always;"></div>
 
 ## lgui framework 使用说明
+
+### 零、下载说明:
+> 在linux环境下执行 git clone https://github.com/d-power/LGUI3.git
+> 如果直接下载了zip包, 在linux环境下执行 unzip LGUI3-master.zip
+> 在windows环境下解压zip包，会导致软链接丢失，需要在linux环境下执行 ./build.sh 已重新链接。
 
 ### 一、框架简介
 * lgui framework全部使用lua语言实现，采用MVC设计思想
