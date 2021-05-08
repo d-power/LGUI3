@@ -80,6 +80,10 @@ local default_event =
     [c.event.lgui_event_page_ready] = function(x, y, z)
         if dispatch.pageready then dispatch.pageready() end
     end,
+
+    [c.event.lgui_event_gesture] = function(x, y, z)
+        if dispatch.gesture then dispatch.gesture(x, y, z) end
+    end,
 }
 
 local service = {}

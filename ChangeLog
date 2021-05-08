@@ -1,3 +1,15 @@
+2021-05-08:
+1. 处理page控件的子控件set_data时, 坐标异常的问题
+2. env.lua 增加设置screensaver_time:无触摸进入屏保的超时时间(s)。当触发屏保时，会触发service: lgui_event_screensaver。
+   屏保由用户自行实现,框架只产生service。
+   触摸或调用lgui_screensaver_reset() 都会重新计算进入屏保的时间。
+3. 增加手势导航特性。通过从边缘向内滑动响应手势事件，支持左、右、上滑。默认不开启，透明颜色。
+   使用函数 lgui_gesture_open() 开启手势导航。
+   使用函数 lgui_gesture_close() 关闭手势导航。
+   使用函数 lgui_gesture_set_color(color) 设置颜色。
+4. 将NX5的视频库更新到 libVideoDec-1.6.6.so。
+5. 修复一些问题。
+
 2021-04-17:
 1. 增加 config/env.lua 中 cache_max_size 配置。
 2. 增加 img 控件属性，用于只显示图片的部分区域。

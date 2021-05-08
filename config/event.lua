@@ -32,6 +32,10 @@ local event =
     lgui_event_change_begin = "lgui_event_change_begin",
     lgui_event_change_finish= "lgui_event_change_finish",
     lgui_event_ctrl_anim    = "lgui_event_ctrl_anim",
+    lgui_event_gesture      = "lgui_event_gesture",
+    lgui_event_gesture_set  = "lgui_event_gesture_set",
+    lgui_event_screensaver  = "lgui_event_screensaver",
+    lgui_event_screensaver_set = "lgui_event_screensaver_set",
 }
 
 return event

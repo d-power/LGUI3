@@ -176,6 +176,10 @@ local controller =
 
     show_record = function(ctrl, value)
         set_data({home_set_hidden = true, record_hidden = false,})
+    end,
+
+    gesture = function(dir)
+        print(dir)
     end
 }
 

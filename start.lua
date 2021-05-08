@@ -32,4 +32,7 @@ common_add("common")
 common_hidden("common")
 common_add("drawer_common")
 
+lgui_gesture_open()
+lgui_gesture_set_color(0x40000080)
+
 set_page("home")
