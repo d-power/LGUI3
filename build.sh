@@ -14,7 +14,7 @@ ln -sf libpng14.so.14.5.0 libpng14.so.14
 ln -sf libpng14.so.14 libpng14.so 
 ln -sf libpng14.so libpng.so
 
-ln -sf libVideoDec-1.6.3.so libVideoDec.so
+ln -sf libVideoDec-1.6.6.so libVideoDec.so
 ln -sf libz.so.1.2.8 libz.so.1
 ln -sf libz.so.1 libz.so
 

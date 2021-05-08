@@ -49,6 +49,8 @@ local env =
     log_color   = {"\027[1;31m", "\027[1;32m", "\027[1;33m"},
     -- 需要预加载 shared 文件
     shared_file = {"shared1", "shared2"},
+    -- 无触摸进入屏保的时间(s)。当触发屏保时，会触发service lgui_event_screensaver。0表示默认(关闭)。
+    screensaver_time = 20,
 }
 
 return env

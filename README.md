@@ -2,7 +2,7 @@
 
 <!-- code_chunk_output -->
 
-- [零、下载说明:](#零-下载说明)
+- [零、下载说明](#零-下载说明)
 - [一、框架简介](#一-框架简介)
 - [二、目录结构](#二-目录结构)
 - [三、基本概念](#三-基本概念)
@@ -33,7 +33,8 @@
   - [9、ctrl的父子特性](#9-ctrl的父子特性)
   - [10、service抢占默认事件特性](#10-service抢占默认事件特性)
   - [11、文本重新着色特性](#11-文本重新着色特性)
-  - [12、common页面特性(实验特性)](#12-common页面特性实验特性)
+  - [12、common页面特性](#12-common页面特性)
+  - [13、手势导航特性](#13-手势导航特性)
 - [七、函数说明](#七-函数说明)
   - [1、lua framework API](#1-lua-framework-api)
   - [2、c library API <lgui3.h>](#2-c-library-api-lgui3h)
@@ -128,7 +129,7 @@ w:331},"È":{d:"49,-160v1,-4,-10,-9,-15,-8v-15,-35,32,-30,57,-31r142,-8v2,1,30,7
 
 ## lgui framework 使用说明
 
-### 零、下载说明:
+### 零、下载说明
 > 在linux环境下执行 git clone https://github.com/d-power/LGUI3.git
 > 如果直接下载了zip包, 在linux环境下执行 unzip LGUI3-master.zip
 > 在windows环境下解压zip包，会导致软链接丢失，需要在linux环境下执行 ./build.sh 已重新链接。
@@ -240,18 +241,24 @@ w:331},"È":{d:"49,-160v1,-4,-10,-9,-15,-8v-15,-35,32,-30,57,-31r142,-8v2,1,30,7
 > |参数名|参数类型|必填(Y/N)|说明|
 > |--|--|--|--|
 > |path|string|Y|lgui framework绝对路径|
+> |cpath|string|Y|依赖c库的路径|
 > |ttf|string|Y|ttf字库文件|
 > |fb|string|Y|framebuffer设备节点|
 > |rorate|number|N|是否旋转，0：不旋转，1：90度，2：180度，3：270度|
 > |disp_flush_period|number|N|显示刷新频率(ms)，0表示默认(20)|
 > |img_cache_num|number|N|图片缓存最大数量，0表示默认(24)|
+> |img_cache_max_size|number|N|单张图片缓存的最大字节。默认大小为屏幕大小|
+> |ttf_cache_num|number|N|界面字型的最大数量，0表示默认(64)|
 > |touch_period|number|N|触摸屏取读频率(ms)，0表示默认(25)|
 > |touch_longpress_period|number|N|触摸屏长按多久上报长按事件(ms)，0表示默认(500)|
 > |key_period|number|N|按键取读频率(ms)，0表示默认(50)|
+> |timer_period|number|N|timer上报频率(ms)，会触发service timer，0表示默认(关闭)|
 > |background|string|Y|背景图片|
 > |log_level|number|Y|打印等级|
 > |log_title|table|Y|打印等级对应的title|
 > |log_color|table|Y|打印等级对应的color|
+> |shared_file|table|Y|需要预加载 shared 文件|
+> |screensaver_time|table|Y|无触摸进入屏保的超时时间(s)。当触发屏保时，会触发service lgui_event_screensaver。0表示默认(关闭)。|
 
 > config/event.lua : 框架事件列表，用户无需关注
 
@@ -512,7 +519,7 @@ end->cond1
 > 请注意，文本重新着色只能在一行中进行，如果着色的文本中存在 ’\n‘ 或 使用 MODE_BREAK 模式导致换行，则新行的文本不会重新着色
 > 目前能使用这一特性的控件：list、text
 
-#### 12、common页面特性(实验特性)
+#### 12、common页面特性
 > lgui3 中除了普通的页面，框架会虚拟common界面。虚拟的common界面会在普通界面的顶部。当普通界面切换时，common界面不会被删除。common界面的关闭时机由用户决定。
 > common 界面主要用于多个界面存在的共性控件。共性控件可以在common中实现，这样就不用在每个界面重复实现共性控件的配置以及方法。例如：弹窗，顶部状态栏等等。
 > 配置方法：common界面的配置方式与普通界面一样。在config/router.lua中配置名字以及对应的文件路径。
@@ -524,7 +531,16 @@ end->cond1
 > 使用函数 common_show 显示common界面。
 > 使用函数 common_check 判断common界面是否存在。
 > 函数的使用方法详情请看函数说明
- 
+
+#### 13、手势导航特性
+> 从边缘向内滑动时, 会将手势导航事件发送到当前页面, 判断并执行 gesture 函数，并将方向以参数的形式返回。
+> 当开启手势导航特性时, 左、右、下 边缘 20 像素内，点击事件被手势控件吸收，覆盖的控件不会被触发。
+> 目前支持左滑(```"left"```)、右滑上滑(```"right"```)、上滑(```"up"```)。
+> 默认不开启手势导航，颜色为透明。
+> 使用函数 lgui_gesture_open() 开启手势导航。
+> 使用函数 lgui_gesture_close() 关闭手势导航。
+> 使用函数 lgui_gesture_set_color(color) 设置颜色。
+
 <div style="page-break-after: always;"></div>
 
 ### 七、函数说明
@@ -671,7 +687,7 @@ end->cond1
 
 <br/>
 
-##### 1.12 common_add(name)
+##### 1.13 common_add(name)
 **说明：** 添加common界面
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -679,7 +695,7 @@ end->cond1
 |name|string|Y|common页面的名字|
 **返回：**
 
-##### 1.12 common_destroy(name)
+##### 1.14 common_destroy(name)
 **说明：** 删除common界面
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -687,7 +703,7 @@ end->cond1
 |name|string|Y|common页面的名字|
 **返回：**
 
-##### 1.12 common_hidden(name)
+##### 1.15 common_hidden(name)
 **说明：** 隐藏common界面
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -695,7 +711,7 @@ end->cond1
 |name|string|Y|common页面的名字|
 **返回：**
 
-##### 1.12 common_show(name)
+##### 1.16 common_show(name)
 **说明：** 显示common界面
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -703,7 +719,7 @@ end->cond1
 |name|string|Y|common页面的名字|
 **返回：**
 
-##### 1.12 common_check(name)
+##### 1.17 common_check(name)
 **说明：** 检查common界面是否存在
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -714,6 +730,28 @@ end->cond1
 |--|--|
 |boolean|返回common界面是否存在|
 
+##### 1.18 lgui_screensaver_reset()
+**说明：** 重新计时屏保时间
+**参数：** 
+**返回：**
+
+##### 1.19 lgui_gesture_open()
+**说明：** 启动手势导航
+**参数：** 
+**返回：**
+
+##### 1.20 lgui_gesture_close()
+**说明：** 关闭手势导航
+**参数：** 
+**返回：**
+
+##### 1.21 lgui_gesture_set_color(color)
+**说明：** 设置手势导航滑动时显示动画色块的颜色
+**参数：** 
+|类型|说明|
+|--|--|
+|color|设置的颜色|
+**返回：**
 
 <br/>
 

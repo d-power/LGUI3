@@ -18,6 +18,10 @@ local timer =
             this.timer()
         end
     end,
+
+    lgui_event_screensaver = function()
+        print("-----------------lgui_event_screensaver-----------------")
+    end,
 }
 
 return timer
