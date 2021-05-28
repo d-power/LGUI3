@@ -25,7 +25,7 @@ local view =
         type = "shared",
         attr = {file = "shared_btn", func = "home_check_btn", 
                 obj = {ay = 16, name = "居家模式", img = "home/居家模式.png", text = "居家模式", up = "set_mode"}},
-    },    
+    },
     {
         type = "shared",
         attr = {file = "shared_btn", func = "home_check_btn", 
@@ -117,7 +117,7 @@ local view =
         type = "img",
         position    = {align = utils_align.OUT_BOTTOM_LEFT, alignx = 0, aligny = 16, ref = "page0_tabtop"},
         attr        = {res = "home/tab_bg.png",  parent = "page0"},
-        name    = "tab_bg1",
+        name        = "tab_bg1",
     },
     {
         type = "img",

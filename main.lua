@@ -43,7 +43,7 @@ for k, v in pairs(service)  do c_service[k] = v end
 c_env.background    = c_env.background:sub(1, 1) == "/" and c_env.background or c_env.path.."/resources/"..c_env.background
 c_env.ttf           = c_env.ttf:sub(1, 1) == "/" and c_env.ttf or c_env.path.."/resources/"..c_env.ttf
 -- 设置c库的搜索路径
-package.cpath       = c_env.cpath:sub(1, 1) == "/" and c_env.cpath or c_env.path.."/"..c_env.cpath.."/?.so;"
+package.cpath       = c_env.cpath:sub(1, 1) == "/" and c_env.cpath or c_env.path.."/"..c_env.cpath.."/?.so;"..c_env.path.."/"..c_env.cpath.."/?.dll;"
 
 -- init lgui c library
 local lgui = require "liblgui3"

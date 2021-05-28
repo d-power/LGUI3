@@ -22,6 +22,10 @@ local timer =
     lgui_event_screensaver = function()
         print("-----------------lgui_event_screensaver-----------------")
     end,
+
+    lgui_event_gesture = function(dir)
+        print("gesture dir :",dir)
+    end
 }
 
 return timer

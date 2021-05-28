@@ -45,6 +45,7 @@ local router =
 
     common      = "pages/common/common",
     drawer_common = "pages/drawer_common/drawer_common",
+    thumbnail   = "pages/thumbnail/thumbnail",
     
 }
 

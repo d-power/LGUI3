@@ -1556,6 +1556,7 @@ end->cond1
 |attr.c_content|number||N|文本颜色|
 |attr.c_preset|number||N|默认文本content_blank的颜色|
 |attr.c_bar|number||N|滚动条的颜色|
+|attr.c_cursor|number||N|光标颜色|
 |attr.c|number||N|背景颜色|
 |attr.content|string||N|文本内容|
 |attr.content_blank|string||N|文本内容为空时，显示的默认文本|

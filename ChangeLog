@@ -1,3 +1,11 @@
+2021-05-28:
+1. 增加WIN64模拟器模式
+2. 运行模拟器需修改config/env.lua的path和cpath，其中cpath应修改为winlib
+3. 修改后，用户使用run_simulator.bat即可运行模拟器
+4. 鼠标左键点击即模拟触摸屏点击操作
+5. LGUI3的page、controller等代码和界面效果，模拟器和嵌入式完全通用，无缝衔接
+6. 用户迁移工程至嵌入式平台时，可以删除winlib和lua.exe等模拟器运行需要的组件
+
 2021-05-08:
 1. 处理page控件的子控件set_data时, 坐标异常的问题
 2. env.lua 增加设置screensaver_time:无触摸进入屏保的超时时间(s)。当触发屏保时，会触发service: lgui_event_screensaver。
