@@ -13,7 +13,7 @@ Bug report: liuzhengzhong@d-power.com.cn
 
 local service =
 {
-    timer = {"lgui_event_timer", "lgui_event_screensaver", "lgui_event_gesture"},
+    timer = {"lgui_event_timer", "lgui_event_screensaver", "lgui_event_gesture", "lgui_event_touch"},
 }
 
 return service

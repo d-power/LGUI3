@@ -36,3 +36,34 @@ lgui_gesture_open()
 lgui_gesture_set_color(0x40000080)
 
 set_page("home")
+
+local count = 0
+local function twosec_timer(timer)
+    count = count + 1
+    print(timer.name, os.date())
+    if count == 5 then
+        lgui_timer_pause("1sec_test")
+    elseif count == 10 then
+        lgui_timer_reumse("1sec_test")
+    elseif count == 15 then
+        lgui_timer_delete("2sec_test")
+    end
+end
+
+local function onesec_timer(param)
+    print(param.name, os.date())
+ end
+ 
+ lgui_timer_create({
+      name = "1sec_test",
+      exec_cb = onesec_timer,
+      duration = 1300,
+      exec_count = 20
+ })
+
+lgui_timer_create({
+    name = "2sec_test",
+    exec_cb = twosec_timer,
+    duration = 2000,
+})
+

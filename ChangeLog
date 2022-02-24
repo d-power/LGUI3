@@ -1,3 +1,29 @@
+2022-02-24:
+1. 支持阿拉伯文显示。
+2. 增加 textarea 光标颜色设置。处理set_data光标闪烁周期属性,不生效问题。
+3. 增加 common_add 函数能携带到common界面的msg参数
+4. 修复 btnm 中map属性为 nil 时, 程序异常
+5. 增加 page 的属性 slideposx, slideposy。用于设置page页面的起始位置
+6. 增加 list 的long事件
+7. 优化 aimg 控件的显示效果
+8. 增加手动设置屏保时间的函数
+9. 处理使用list TYPE_BTN 类型时退出界面死机的问题。
+10. 增加 page 的inner属性, 用于设置子对象之间的内边距,(layout ~= utils_page.LAYOUT_OFF时)。
+11. 更新PC模拟器的lgui3动态库。
+12. 修复 slider 控件 w > h 且半透明时, 中间镂空, 两边有颜色的问题。
+13. 处理delete drawer控件时, 段错误的问题
+14. 添加 btn、blank、mark、mbox 控件的 lost 事件
+15. 添加 坐标点上报。事件名为 lgui_event_touch。参数为 x:x坐标 y:y坐标 state:触摸状态
+16. 修复mark颜色属性 set_data 失败的问题。
+17. list 添加imgbtn类型。
+18. 可触发控件增加touchable属性,用于禁用对象。
+19. mark增加 radius 属性设置圆角半径。
+20. 增加自定义定时器的接口。 lgui_timer_create(info)、lgui_timer_delete()
+                         lgui_timer_pause()、 lgui_timer_reumse()。 详情请查看说明文档。
+21. 添加 list 控件的属性, list控件支持横向滑动
+22. 增加btn以及list按下效果的延时处理。
+23. 修复一些问题。
+
 2021-05-28:
 1. 增加WIN64模拟器模式
 2. 运行模拟器需修改config/env.lua的path和cpath，其中cpath应修改为winlib

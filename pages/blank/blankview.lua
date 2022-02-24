@@ -26,7 +26,8 @@ local view =
         action = {bind = {up = function() 
                             log(3, "blank1 up " .. (this.data.blank2_dis and "false" or "true"))
                             set_data({blank2_dis = not this.data.blank2_dis})
-                          end}}
+                          end,
+                          lost = function()print("lost") end}}
     },
     {
         type        = "text",

@@ -65,6 +65,10 @@ local default_event =
         dispatch.press(c.event.lgui_event_release, x, y, z)
     end,
 
+    [c.event.lgui_event_presslost] = function(x, y, z)
+        dispatch.press(c.event.lgui_event_presslost, x, y, z)
+    end,
+
     [c.event.lgui_event_longpress] = function(x, y, z)
         dispatch.press(c.event.lgui_event_longpress, x, y, z)
     end,
@@ -83,6 +87,10 @@ local default_event =
 
     [c.event.lgui_event_gesture] = function(x, y, z)
         if dispatch.gesture then dispatch.gesture(x, y, z) end
+    end,
+
+    [c.event.lgui_event_user_timer] = function(x, y, z)
+        if dispatch.timer_action then dispatch.timer_action(x, y, z) end
     end,
 }
 

@@ -15,6 +15,7 @@ local event =
 {
     lgui_event_press        = "lgui_event_press",
     lgui_event_release      = "lgui_event_release",
+    lgui_event_presslost    = "lgui_event_presslost",
     lgui_event_longpress    = "lgui_event_longpress",
     lgui_event_changevalue  = "lgui_event_changevalue",
     lgui_event_onshow       = "lgui_event_onshow",
@@ -36,6 +37,9 @@ local event =
     lgui_event_gesture_set  = "lgui_event_gesture_set",
     lgui_event_screensaver  = "lgui_event_screensaver",
     lgui_event_screensaver_set = "lgui_event_screensaver_set",
+    lgui_event_touch        = "lgui_event_touch",
+    lgui_event_touch_report_enable = "lgui_event_touch_report_enable",
+    lgui_event_user_timer   = "lgui_event_user_timer",
 }
 
 return event

@@ -133,6 +133,9 @@ w:331},"È":{d:"49,-160v1,-4,-10,-9,-15,-8v-15,-35,32,-30,57,-31r142,-8v2,1,30,7
 > 在linux环境下执行 git clone https://github.com/d-power/LGUI3.git
 > 如果直接下载了zip包, 在linux环境下执行 unzip LGUI3-master.zip
 > 在windows环境下解压zip包，会导致软链接丢失，需要在linux环境下执行 ./build.sh 已重新链接。
+> 在Windows下运行时需要用libs_win替换libs
+> 在Linux机器上运行时需要用libs_arm替换libs
+>
 
 ### 一、框架简介
 * lgui framework全部使用lua语言实现，采用MVC设计思想
@@ -687,12 +690,13 @@ end->cond1
 
 <br/>
 
-##### 1.13 common_add(name)
+##### 1.13 common_add(name, msg)
 **说明：** 添加common界面
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
 |--|--|--|--|
 |name|string|Y|common页面的名字|
+|msg|table|N|携带到common界面的msg|
 **返回：**
 
 ##### 1.14 common_destroy(name)
@@ -748,10 +752,111 @@ end->cond1
 ##### 1.21 lgui_gesture_set_color(color)
 **说明：** 设置手势导航滑动时显示动画色块的颜色
 **参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|color|number|Y|设置的颜色|
+**返回：**
+
+##### 1.22 set_screensaver_time(times)
+**说明：** 重新设置屏保时间
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|times|number|Y|设置的时长. 单位: s|
+**返回：**
+
+##### 1.23 get_type_by_index(index)
+**说明：** 通过控件的index值获取控件类型
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|index|number|Y|控件的index值|
+**返回：**
 |类型|说明|
 |--|--|
-|color|设置的颜色|
+|string|返回控件的类型。如："btn", "img"|
+
+##### 1.24 lgui_touch_report_enable(enable)
+**说明：** 是否开启坐标点上报。开启时将产生 lgui_event_touch 事件。
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|enable|boolean|Y|true:开启 false 关闭|
 **返回：**
+无
+
+***说明: 当开启坐标点上报时，将产生lgui_event_touch事件***
+***参数：***
+|参数名|参数类型|说明|
+|--|--|--|
+| x | string | x坐标 |
+| y | string | y坐标 |
+| state | string | 触摸状态 |
+
+
+##### 1.25 lgui_timer_create(info)
+**说明：** 创建自定义 timer
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|info|table|Y|timer参数|
+|info.name|string|Y|timer的名字，为timer的唯一标识符, 不能为空|
+|info.exec_cb|function|Y|timer的执行函数|
+|info.duration|string|Y|timer的周期时长|
+|info.exec_count|string|Y|timer执行一定次数自动销毁, 为 nil 时，timer需用户自行销毁|
+**返回：**
+|类型|说明|
+|--|--|
+|boolean|true:success false:fail|
+
+> 例如：
+> ```lua
+>
+> -- param table 包含创建 timer 是传入的info数据。创建时可在info内部自定义成员
+> local function onesec_timer(param)
+>    print(param.name, os.date())
+> end
+> 
+> lgui_timer_create({
+>      name = "1sec_test",
+>      exec_cb = onesec_timer,
+>      duration = 200,
+> })
+> 
+
+
+##### 1.26 lgui_timer_delete(name)
+**说明：** 删除自定义 timer
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|name|string|Y|timer的名字|
+**返回：**
+|类型|说明|
+|--|--|
+|boolean|true:success false:fail|
+
+##### 1.27 lgui_timer_pause(name)
+**说明：** 暂停自定义 timer
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|name|string|Y|timer的名字|
+**返回：**
+|类型|说明|
+|--|--|
+|boolean|true:success false:fail|
+
+##### 1.28 lgui_timer_reumse(name)
+**说明：** 恢复自定义 timer
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|name|string|Y|timer的名字|
+**返回：**
+|类型|说明|
+|--|--|
+|boolean|true:success false:fail|
 
 <br/>
 
@@ -938,6 +1043,7 @@ end->cond1
 |name|string||N|控件名字，需在当前view中唯一，其他控件用该名字关联参考控件或父控件|
 |attr|table||Y|控件属性|
 |attr.hidden|boolean|false|N|是否隐藏|
+|attr.touchable|boolean|true|N|控件是否开启触摸事件, 默认开启|
 |attr.parent|string||N|指定父控件|
 
 #### 1、bar
@@ -1030,6 +1136,7 @@ end->cond1
 |attr.c_content_clk|number||N|文本按下时的颜色|
 |attr.c_content_dis|number||N|文本禁用时的颜色|
 |attr.c_content_chk|number||N|文本选中时的颜色|
+|attr.radius|number|| N | 按键的圆角半径 |
 |attr.map|table||Y|矩阵文本，以"\n"作为换行分隔，""空字符为结尾|
 |attr.map_ctrl|table||Y|矩阵文本控制，参考utils/btnm.lua|
 |action|table||N|控件动作|
@@ -1193,7 +1300,10 @@ end->cond1
 |attr.w|number||Y|控件宽度|
 |attr.h|number||Y|控件高度|
 |attr.slidepos|number||Y|控件初始滑动位置|
-|attr.h_line|number||Y|列表中，每一行的高度|
+|attr.mode|number||N|list 右边滚动条的模式|
+|attr.h_line|number||Y|列表中，每一行的高度(滑动方位为纵向时生效,生效时必填)|
+|attr.w_line|number||Y|列表中，每一行的宽度(滑动方位为横向时生效,生效时必填)|
+|attr.dir|number|0|N|列表滑动的方向, 可设值参考 utils/list.lua 的定义 |
 |attr.c|number||N|列表背景颜色|
 |attr.c_def|number||N|每行作为一个按键时的颜色|
 |attr.c_clk|number||N|按下时的颜色|
@@ -1217,6 +1327,7 @@ end->cond1
 |action.bind|table||N|动作绑定列表|
 |action.bind.up|string||N|释放时，绑定controller中的函数名|
 |action.bind.down|string||N|控件按键按下时，绑定controller中的函数名|
+|action.bind.long|string||N|控件按键长按时，绑定controller中的函数名|
 |action.bind.change|string||N|控件滑动时，绑定controller中的函数名|
 
 **示例：**
@@ -1268,6 +1379,7 @@ end->cond1
 |w|number||Y|蒙层宽度|
 |h|number||Y|蒙层高度|
 |c|number||Y|蒙层颜色|
+|radius|number||N|圆角半径|
 |keep|number|false|N|是否保持当前配置的位置，而不是显示的最上面|
 |action|table||N|控件动作|
 |action.bind|table||N|动作绑定列表|
@@ -1352,7 +1464,7 @@ end->cond1
 |attr.mode|number||N|文本模式，滚动/裁剪等等，参考utils/text.lua|
 |attr.align|number||N|该控件范围内的文本对齐方式，参考utils/text.lua|
 |attr.c|number||N|文本颜色|
-|attr.dir|number||N|文本反向，参考utils/text.lua|
+|attr.dir|number||N|文本方向，参考utils/text.lua|
 
 
 
@@ -1426,6 +1538,7 @@ end->cond1
 |attr.max|number||N|滑块控件的最大值|
 |attr.value|number||N|滑块控件的当前值|
 |attr.left|number||N|双按钮模式有效|
+|attr.radius|number||N|圆角半径|
 |attr.mode|number||N|滑块选择器模式，参考utils/slider.lua|
 |action|table||N|控件动作|
 |action.bind|table||N|动作绑定列表|
@@ -1488,6 +1601,10 @@ end->cond1
 |attr.c|number||N|页背景颜色|
 |attr.c_bar|number||N|页滚动条颜色|
 |attr.round|boolean||N|是否使用圆角|
+|attr.radius|number||N|圆角半径|
+|attr.slideposx| number|| N | 当前page滑动的位置x(一般为负数) |
+|attr.slideposy| number|| N | 当前page滑动的位置y(一般为负数) |
+|attr.inner| number||N|当使用layout时，控件与控件之间的间距|
 |attr.flash|boolean|false|N|是否开启边缘动画|
 |attr.layout|number||N|页布局，参考utils/page.lua|
 |attr.mode|number||N|页模式，参考utils/page.lua|
@@ -1874,7 +1991,10 @@ end->cond1
 
 #### 25、drawer
 **说明：** 
-> 暂无属性设置
+|属性|类型|默认值|必填(Y/N)|说明|
+|--|--|--|--|--|
+|attr.act_h|number||N|触发区域的高度|
+|attr.show_h|number||N|当前显示的高度|
 
 > 注: 使用当前控件时, 屏幕上面30像素点的范围内不会触发其他控件
 
@@ -1885,7 +2005,7 @@ end->cond1
 |--|--|--|--|--|
 |attr.times|number| -1 |Y|循环次数, -1时无限循环|
 |attr.interval|number||Y|切换图片的间隔|
-
+|attr.map|table||Y|图片路径合集|
 **示例：**
 > view
 > ```lua

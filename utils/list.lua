@@ -21,6 +21,8 @@ local list =
     TYPE_TEXT              = 1,
     -- 按键区域
     TYPE_BTN               = 2,
+    -- 图片按键
+    TYPE_IMGBTN            = 3,
 
     -- 当TYPE_TEXT时，对齐参数有效
     TEXT_ALIGN_LEFT        = utils_text.ALIGN_LEFT,
@@ -34,6 +36,11 @@ local list =
     TEXT_MODE_SROLL        = utils_text.MODE_SROLL,
     TEXT_MODE_SROLL_CIRC   = utils_text.MODE_SROLL_CIRC,
     TEXT_MODE_CROP         = utils_text.MODE_CROP,
+
+    -- 纵向滑动
+    DIR_VER                = 0,
+    -- 横向滑动
+    DIR_HOR                = 1,
 }
 
 return list 

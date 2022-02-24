@@ -25,7 +25,11 @@ local timer =
 
     lgui_event_gesture = function(dir)
         print("gesture dir :",dir)
-    end
+    end,
+
+    lgui_event_touch = function(x, y, state)
+        print(x, y, state)
+    end,
 }
 
 return timer

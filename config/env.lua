@@ -14,7 +14,7 @@ Bug report: liuzhengzhong@d-power.com.cn
 local env =
 {
     -- 工程的绝对路径
-    path        = "E:/WorkSpace/NX5/github/LGUI3",
+    path        = "Z:/Desktop/GitHub/LGUI3",
     -- 依赖c库的路径
     cpath       = "winlib",
     -- 字库
