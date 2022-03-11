@@ -757,7 +757,14 @@ end->cond1
 |color|number|Y|设置的颜色|
 **返回：**
 
-##### 1.22 set_screensaver_time(times)
+##### 1.22 lgui_gesture_set_part(part)
+**说明：** 设置手势控件可触发的动作
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|part|number|Y|可触发的动作(可取值参考 utils/gesture.lua)|
+
+##### 1.23 set_screensaver_time(times)
 **说明：** 重新设置屏保时间
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -765,7 +772,7 @@ end->cond1
 |times|number|Y|设置的时长. 单位: s|
 **返回：**
 
-##### 1.23 get_type_by_index(index)
+##### 1.24 get_type_by_index(index)
 **说明：** 通过控件的index值获取控件类型
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -776,7 +783,7 @@ end->cond1
 |--|--|
 |string|返回控件的类型。如："btn", "img"|
 
-##### 1.24 lgui_touch_report_enable(enable)
+##### 1.25 lgui_touch_report_enable(enable)
 **说明：** 是否开启坐标点上报。开启时将产生 lgui_event_touch 事件。
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -794,7 +801,7 @@ end->cond1
 | state | string | 触摸状态 |
 
 
-##### 1.25 lgui_timer_create(info)
+##### 1.26 lgui_timer_create(info)
 **说明：** 创建自定义 timer
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -825,7 +832,7 @@ end->cond1
 > 
 
 
-##### 1.26 lgui_timer_delete(name)
+##### 1.27 lgui_timer_delete(name)
 **说明：** 删除自定义 timer
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -836,7 +843,7 @@ end->cond1
 |--|--|
 |boolean|true:success false:fail|
 
-##### 1.27 lgui_timer_pause(name)
+##### 1.28 lgui_timer_pause(name)
 **说明：** 暂停自定义 timer
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -847,7 +854,7 @@ end->cond1
 |--|--|
 |boolean|true:success false:fail|
 
-##### 1.28 lgui_timer_reumse(name)
+##### 1.29 lgui_timer_reumse(name)
 **说明：** 恢复自定义 timer
 **参数：** 
 |参数名|参数类型|必填(Y/N)|说明|
@@ -1007,6 +1014,12 @@ end->cond1
 >    return 1;
 > }
 >```
+
+##### 2.4 LGUI_C_API bool lgui_dispaly_deinit(void);
+**说明：** 关闭LGUI3显示
+
+##### 2.5 LGUI_C_API bool lgui_dispaly_reinit(void);
+**说明：** 重新打开LGUI3显示
 
 <div style="page-break-after: always;"></div>
 
@@ -1464,6 +1477,8 @@ end->cond1
 |attr.mode|number||N|文本模式，滚动/裁剪等等，参考utils/text.lua|
 |attr.align|number||N|该控件范围内的文本对齐方式，参考utils/text.lua|
 |attr.c|number||N|文本颜色|
+|attr.c_bg|number||N|控件的背景颜色|
+|attr.radius|number||N|控件的背景圆角半径|
 |attr.dir|number||N|文本方向，参考utils/text.lua|
 
 
@@ -1734,6 +1749,8 @@ end->cond1
 |attr.w|number||Y|控件宽度|
 |attr.h|number||Y|控件高度|
 |attr.c_bar|number||N|页滚动条颜色|
+|attr.anim_time|number|100|N|tab控件切换到下个tab所用的动画时间(ms)|
+|attr.treshold|number|attr.w/16|N|tab控件滑动时切换到下个界面的阈值(指最少拖动treshold距离切换到下个tab)|
 |attr.tab|number||N|当前显示的tab编号，从0开始|
 |attr.mode|number||N|tab编号的显示位置，参考utils/tab.lua|
 
@@ -1995,6 +2012,7 @@ end->cond1
 |--|--|--|--|--|
 |attr.act_h|number||N|触发区域的高度|
 |attr.show_h|number||N|当前显示的高度|
+|attr.dir|number||N|滑动方向, 可取值参考 utils/drawer.lua|
 
 > 注: 使用当前控件时, 屏幕上面30像素点的范围内不会触发其他控件
 

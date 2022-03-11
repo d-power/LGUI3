@@ -17,7 +17,7 @@ local view =
     {
         type        = "text",
         position    = {align = utils_align.IN_TOP_LEFT, alignx = 50, aligny = 150},
-        attr        = {content = "保持控件大小，超出部分显示省略号", w = 240, h = 30, c = 0xffffffff, mode = utils_text.MODE_DOT},
+        attr        = {content = "保持控件大小，超出部分显示省略号", c_bg = 0xFF0000FF, w = 240, h = 30, c = 0xffffffff, mode = utils_text.MODE_DOT},
     },
     {
         type        = "text",

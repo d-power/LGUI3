@@ -2,7 +2,7 @@ return {
     {
         type = "drawer",
         position = {},
-        attr = {},
+        attr = {dir = utils_drawer.DIR_DOWN, act_h = 20},
         name = "drawer"
     },
     {

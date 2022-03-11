@@ -25,6 +25,8 @@ utils_slider    = require "utils.slider"
 utils_page      = require "utils.page"
 utils_chart     = require "utils.chart"
 utils_combobox  = require "utils.combobox"
+utils_gesture   = require "utils.gesture"
+utils_drawer    = require "utils.drawer"
 
 -- default first page to show
 
@@ -34,6 +36,7 @@ common_add("drawer_common")
 
 lgui_gesture_open()
 lgui_gesture_set_color(0x40000080)
+lgui_gesture_set_part(utils_gesture.GESTURE_LEFT | utils_gesture.GESTURE_UP | utils_gesture.GESTURE_RIGHT)
 
 set_page("home")
 

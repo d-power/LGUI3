@@ -61,7 +61,7 @@ local view =
     {
         type        = "tab",
         position    = {align = utils_align.IN_TOP_MID, alignx = 0, aligny = 0},
-        attr        = {w = 736, h = 360, btns_pos = 0,  parent = "page0"},
+        attr        = {w = 736, h = 360, btns_pos = 0,  parent = "page0", anim_time = 300, treshold = 30},
         action      = {bind = {up = "tab_up", down = "tab_down", change = "tab_act"},},
         name        = "page0_tabtop"
     },

@@ -1,3 +1,16 @@
+2022-03-10:
+1. 添加属性 c_bg  text控件背景颜色
+2. 添加属性 radius  text控件背景圆角
+3. 添加属性 anim_time tab控件切换到下个tab所用的动画时间
+4. 添加属性 treshold  tab控件滑动时切换到下个界面的阈值(指最少拖动treshold距离切换到下个tab)
+5. 修复text控件mode属性为MODE_EXPAND时,居中异常的问题
+6. 增加c层开关显示的接口 lgui_dispaly_deinit() lgui_dispaly_reinit()
+7. 修复aimg控件循环播放时最后一张图片时间过长的问题
+8. lua 添加 lgui_gesture_set_part(part) 接口，用于设置手势可触发的部分，可取值参考 utils/gesture.lua
+9. 修复page设置 slideposy 时, 子控件使用ref且ref==parent时,显示异常的问题
+10. 机器上显示时, 背景会根据屏幕大小自动缩放铺满屏幕
+11. 添加drawer控件的属性 dir, 用于设置drawer控件的滑动方向, 可取值参考 utils/drawer.lua
+
 2022-03-03:
 1. 修复page控件禁用且子类存在btn时,滑动不能传递给父类tab的问题
 2. 修复当tab控件有mark子类, 在mark控件的范围内滑动tab时,mark控件的up事件会触发的问题

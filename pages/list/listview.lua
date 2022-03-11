@@ -22,7 +22,7 @@ local view =
         attr =
         {
             w = 960, h = 460, h_line = 100, w_line = 480, c = 0xffbcc3cd, c_def = 0x00000000, c_clk = 0xff000000, keep = true, c_bar = 0x00000000,
-            map = "{{list_map}}", slidepos = "{{list_pos}}", c_edge = 0x00ff0000, dir = utils_list.DIR_HOR,
+            map = "{{list_map}}", slidepos = "{{list_pos}}", c_edge = 0x00ff0000, dir = utils_list.DIR_VER,
             map_ctrl =
             {
                 {
