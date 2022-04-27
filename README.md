@@ -1104,6 +1104,8 @@ end->cond1
 |属性|类型|默认值|必填(Y/N)|说明|
 |--|--|--|--|--|
 |attr.state|number|0|N|btn的状态，参考utils/btn.lua|
+|attr.w|number|0|N|按键的固定宽,设置之后图片将居中显示,超出的部分将会被裁剪|
+|attr.h|number|0|N|按键的固定高,设置之后图片将居中显示,超出的部分将会被裁剪|
 |attr.chk|boolean|false|N|是否作为check btn，比如开关，或btn有选中状态，需初始化state状态|
 |attr.res_rel|string||Y|按钮释放时的图片. 作为check btn时，非check状态下释放时的图片|
 |attr.res_clk|string||N|按钮按下时的图片. 作为check btn时，非check状态下按下时的图片|
@@ -1314,6 +1316,7 @@ end->cond1
 |attr.h|number||Y|控件高度|
 |attr.slidepos|number||Y|控件初始滑动位置|
 |attr.mode|number||N|list 右边滚动条的模式|
+|attr.radius|number||N|list 背景圆角半径|
 |attr.h_line|number||Y|列表中，每一行的高度(滑动方位为纵向时生效,生效时必填)|
 |attr.w_line|number||Y|列表中，每一行的宽度(滑动方位为横向时生效,生效时必填)|
 |attr.dir|number|0|N|列表滑动的方向, 可设值参考 utils/list.lua 的定义 |
@@ -1723,6 +1726,7 @@ end->cond1
 |--|--|--|--|--|
 |attr.ver|number||Y|二维码的版本|
 |attr.w|number||Y|二维码像素之间的距离|
+|attr.eclevel|number||Y|二维码容错等级(0-3)|
 |attr.content|string||Y|二维码中的内容|
 
 > 二维码图片的宽度为 ((ver - 1) * 4 + 21 + w * 2) * w 
@@ -1821,12 +1825,28 @@ end->cond1
 |--|--|--|--|--|
 |attr.w|number||Y|控件宽度|
 |attr.h|number||Y|控件高度|
+|attr.c_rel|number||Y|按钮释放时的颜色,作为check btn时，非check状态下释放时的颜色|
+|attr.c_clk|number||Y|按钮按下时的颜色. 作为check btn时，非check状态下按下时的颜色|
+|attr.c_dis|number||Y|按钮禁用时的颜色. 作为check btn时，非check状态下禁用时的颜色|
+|attr.c_chk_rel|number||Y|作为check btn时，check状态下释放时的颜色|
+|attr.c_chk_clk|number||Y|作为check btn时，check状态下按下时的颜色|
+|attr.c_chk_dis|number||Y|作为check btn时，check状态下禁用时的颜色|
+|attr.radius|number||Y|圆角半径|
+|attr.state|number||Y|btn的状态，参考utils/btn.lua|
+|attr.chk|number||Y|是否作为check btn|
 |attr.dis|boolean|false|N|是否禁用按键|
 |action|table||N|控件动作|
 |action.bind|table||N|动作绑定列表|
 |action.bind.up|string||N|释放时，绑定controller中的函数名|
 |action.bind.down|string||N|按下时，绑定controller中的函数名|
 |action.bind.long|string||N|长按时，绑定controller中的函数名|
+
+**注：** w, h属性的特殊值说明
+|值|说明|
+|--|--|
+|-1|紧密包裹子控件,根据子控件的最大宽高显示|
+|-2|根据父控件缩放大小,对齐父控件的边缘示|
+|-3|先根据父控件缩放大小,对齐父控件的边缘, 如果子控件有对象超过则扩充大小|
 
 **示例：**
 > view
