@@ -2,69 +2,69 @@
 
 <!-- code_chunk_output -->
 
-- [零、下载说明](#零-下载说明)
-- [一、框架简介](#一-框架简介)
-- [二、目录结构](#二-目录结构)
-- [三、基本概念](#三-基本概念)
-  - [(1) view](#1-view)
-  - [(2) ctrl](#2-ctrl)
-  - [(3) controller](#3-controller)
-  - [(4) service](#4-service)
-  - [(5) page](#5-page)
-  - [(6) router](#6-router)
-  - [(7) app](#7-app)
-  - [(8) lgui entry](#8-lgui-entry)
-  - [(9) lgui c library](#9-lgui-c-library)
-  - [(10) lua table](#10-lua-table)
-- [四、lgui framework文件说明](#四-lgui-framework文件说明)
-- [五、时序图](#五-时序图)
-  - [(1) lgui framework starting](#1-lgui-framework-starting)
-  - [(2) page loading](#2-page-loading)
-  - [(3) service callback](#3-service-callback)
-- [六、lgui framework特性描述](#六-lgui-framework特性描述)
-  - [1、ctrl加载顺序](#1-ctrl加载顺序)
-  - [2、setdata特性](#2-setdata特性)
-  - [3、view中ctrl事件关联controller](#3-view中ctrl事件关联controller)
-  - [4、this特性](#4-this特性)
-  - [5、热更新特性](#5-热更新特性)
-  - [6、lgui中的背景特性](#6-lgui中的背景特性)
-  - [7、ctrl position特性](#7-ctrl-position特性)
-  - [8、图片资源自动解析特性](#8-图片资源自动解析特性)
-  - [9、ctrl的父子特性](#9-ctrl的父子特性)
-  - [10、service抢占默认事件特性](#10-service抢占默认事件特性)
-  - [11、文本重新着色特性](#11-文本重新着色特性)
-  - [12、common页面特性](#12-common页面特性)
-  - [13、手势导航特性](#13-手势导航特性)
-- [七、函数说明](#七-函数说明)
-  - [1、lua framework API](#1-lua-framework-api)
-  - [2、c library API <lgui3.h>](#2-c-library-api-lgui3h)
-- [八、控件说明](#八-控件说明)
-  - [1、bar](#1-bar)
-  - [2、btn](#2-btn)
-  - [3、btnm](#3-btnm)
-  - [4、checkbox](#4-checkbox)
-  - [5、clock](#5-clock)
-  - [6、img](#6-img)
-  - [7、list](#7-list)
-  - [8、loading](#8-loading)
-  - [9、mark](#9-mark)
-  - [10、mbox](#10-mbox)
-  - [11、text](#11-text)
-  - [12、roller](#12-roller)
-  - [13、slider](#13-slider)
-  - [14、spinner](#14-spinner)
-  - [15、page](#15-page)
-  - [16、textarea](#16-textarea)
-  - [17、qrcode](#17-qrcode)
-  - [18、tab](#18-tab)
-  - [19、vdec](#19-vdec)
-  - [20、blank](#20-blank)
-  - [21、swiper](#21-swiper)
-  - [22、shared](#22-shared)
-  - [23、chart](#23-chart)
-  - [24、combobox](#24-combobox)
-  - [25、drawer](#25-drawer)
-  - [26、aimg](#26-aimg)
+- [零、下载说明](#-零-下载说明-)
+- [一、框架简介](#-一-框架简介-)
+- [二、目录结构](#-二-目录结构-)
+- [三、基本概念](#-三-基本概念-)
+  - [(1) view](#-1-view-)
+  - [(2) ctrl](#-2-ctrl-)
+  - [(3) controller](#-3-controller-)
+  - [(4) service](#-4-service-)
+  - [(5) page](#-5-page-)
+  - [(6) router](#-6-router-)
+  - [(7) app](#-7-app-)
+  - [(8) lgui entry](#-8-lgui-entry-)
+  - [(9) lgui c library](#-9-lgui-c-library-)
+  - [(10) lua table](#-10-lua-table-)
+- [四、lgui framework文件说明](#-四-lgui-framework文件说明-)
+- [五、时序图](#-五-时序图-)
+  - [(1) lgui framework starting](#-1-lgui-framework-starting-)
+  - [(2) page loading](#-2-page-loading-)
+  - [(3) service callback](#-3-service-callback-)
+- [六、lgui framework特性描述](#-六-lgui-framework特性描述-)
+  - [1、ctrl加载顺序](#-1-ctrl加载顺序-)
+  - [2、setdata特性](#-2-setdata特性-)
+  - [3、view中ctrl事件关联controller](#-3-view中ctrl事件关联controller-)
+  - [4、this特性](#-4-this特性-)
+  - [5、热更新特性](#-5-热更新特性-)
+  - [6、lgui中的背景特性](#-6-lgui中的背景特性-)
+  - [7、ctrl position特性](#-7-ctrl-position特性-)
+  - [8、图片资源自动解析特性](#-8-图片资源自动解析特性-)
+  - [9、ctrl的父子特性](#-9-ctrl的父子特性-)
+  - [10、service抢占默认事件特性](#-10-service抢占默认事件特性-)
+  - [11、文本重新着色特性](#-11-文本重新着色特性-)
+  - [12、common页面特性](#-12-common页面特性-)
+  - [13、手势导航特性](#-13-手势导航特性-)
+- [七、函数说明](#-七-函数说明-)
+  - [1、lua framework API](#-1-lua-framework-api-)
+  - [2、c library API <lgui3.h>](#-2-c-library-api-lgui3h-)
+- [八、控件说明](#-八-控件说明-)
+  - [1、bar](#-1-bar-)
+  - [2、btn](#-2-btn-)
+  - [3、btnm](#-3-btnm-)
+  - [4、checkbox](#-4-checkbox-)
+  - [5、clock](#-5-clock-)
+  - [6、img](#-6-img-)
+  - [7、list](#-7-list-)
+  - [8、loading](#-8-loading-)
+  - [9、mark](#-9-mark-)
+  - [10、mbox](#-10-mbox-)
+  - [11、text](#-11-text-)
+  - [12、roller](#-12-roller-)
+  - [13、slider](#-13-slider-)
+  - [14、spinner](#-14-spinner-)
+  - [15、page](#-15-page-)
+  - [16、textarea](#-16-textarea-)
+  - [17、qrcode](#-17-qrcode-)
+  - [18、tab](#-18-tab-)
+  - [19、vdec](#-19-vdec-)
+  - [20、blank](#-20-blank-)
+  - [21、swiper](#-21-swiper-)
+  - [22、shared](#-22-shared-)
+  - [23、chart](#-23-chart-)
+  - [24、combobox](#-24-combobox-)
+  - [25、drawer](#-25-drawer-)
+  - [26、aimg](#-26-aimg-)
   
 <!-- /code_chunk_output -->
 
@@ -865,6 +865,13 @@ end->cond1
 |--|--|
 |boolean|true:success false:fail|
 
+##### 1.30 lgui_set_img_cache_max_size(max_size)
+**说明：** 设置单张图片缓存的最大字节
+**参数：** 
+|参数名|参数类型|必填(Y/N)|说明|
+|--|--|--|--|
+|max_size|number|Y|单张图片缓存的最大字节|
+
 <br/>
 
 #### 2、c library API <lgui3.h>
@@ -1057,6 +1064,7 @@ end->cond1
 |attr|table||Y|控件属性|
 |attr.hidden|boolean|false|N|是否隐藏|
 |attr.touchable|boolean|true|N|控件是否开启触摸事件, 默认开启|
+|attr.dis_scroll_propagation|boolean|false|N|用于禁用当前控件的滑动传递功能|
 |attr.parent|string||N|指定父控件|
 
 #### 1、bar
@@ -1152,6 +1160,9 @@ end->cond1
 |attr.c_content_dis|number||N|文本禁用时的颜色|
 |attr.c_content_chk|number||N|文本选中时的颜色|
 |attr.radius|number|| N | 按键的圆角半径 |
+|attr.inner|number|8| N | 按键之间的填充的大小 |
+|attr.pad_x|number|8| N | 键盘左右填充的大小 |
+|attr.pad_y|number|8| N | 键盘顶部与底部填充的大小 |
 |attr.map|table||Y|矩阵文本，以"\n"作为换行分隔，""空字符为结尾|
 |attr.map_ctrl|table||Y|矩阵文本控制，参考utils/btnm.lua|
 |action|table||N|控件动作|
@@ -1254,6 +1265,12 @@ end->cond1
 |attr.res_sec|number||N|秒钟图片|
 |attr.res_min|number||N|分针图片|
 |attr.res_hour| number ||N|时针图片|
+|attr.hour_offset_x| number ||N|时针图片旋转中心x轴偏移大小|
+|attr.hour_offset_y| number ||N|时针图片旋转中心y轴偏移大小|
+|attr.min_offset_x| number ||N|分针图片旋转中心x轴偏移大小|
+|attr.min_offset_y| number ||N|分针图片旋转中心y轴偏移大小|
+|attr.sec_offset_x| number ||N|秒针图片旋转中心x轴偏移大小|
+|attr.sec_offset_y| number ||N|秒针图片旋转中心y轴偏移大小|
 |attr.align|number|0|N|时间文字在控件范围中的位置，参考utils/clock.lua|
 |attr.c|number||Y|时间文字的颜色|
 |attr.fmt|string||Y|时间格式，遵循C strftime函数中的format规则|
@@ -1329,6 +1346,8 @@ end->cond1
 |attr.c_chk|number||N|选中时的颜色|
 |attr.c_bar|number||N|页滚动条颜色|
 |attr.c_edge|number||N|当列表到达最高或最低位置时,显示类似圆圈效果的颜色|
+|attr.btn_fit|number||N|列表中按键的fit属性|
+|attr.inner|number||N|列表中按键之间填充的大小|
 |attr.chk|boolean|false|N|是否开启选中模式|
 |attr.keep|boolean|false|N|是否锁定列表，当set_data更新列表成员时，保存list当前位置不变|
 |attr.map|table||Y||
@@ -1439,8 +1458,9 @@ end->cond1
 |attr.c_btn_clk|number||N|消息框按键按下时的颜色|
 |attr.c_btn_def|number||N|消息框按键抬起时的颜色|
 |attr.time|number||N|消息框定时关闭时间|
-|attr.title|number||N|消息框标题文本|
-|attr.body|number||N|消息框正文文本|
+|attr.raduis|number||N|设置背景圆角大小|
+|attr.title|string||N|消息框标题文本|
+|attr.body|string||N|消息框正文文本|
 |attr.content|table||N|消息框按键矩阵|
 |action|table||N|控件动作|
 |action.bind|table||N|动作绑定列表|
@@ -1553,6 +1573,7 @@ end->cond1
 |attr.c|number||N|控件背景颜色|
 |attr.c_act|number||N|已选择区域颜色|
 |attr.c_knob|number||N|滑块旋钮颜色|
+|attr.res_knob|number||N|将图片设置成滑块旋钮|
 |attr.round|boolean|false|N|是否圆角|
 |attr.spin|boolean|false|N|是否只能使用滑动，不响应点击事件|
 |attr.min|number||N|滑块控件的最小值|
@@ -1621,6 +1642,7 @@ end->cond1
 |attr.h|number||Y|控件高度|
 |attr.c|number||N|页背景颜色|
 |attr.c_bar|number||N|页滚动条颜色|
+|attr.c_edge|number||N|当列表到达最高或最低位置时,显示类似圆圈效果的颜色|
 |attr.round|boolean||N|是否使用圆角|
 |attr.radius|number||N|圆角半径|
 |attr.slideposx| number|| N | 当前page滑动的位置x(一般为负数) |
@@ -1696,6 +1718,7 @@ end->cond1
 |attr.c_bar|number||N|滚动条的颜色|
 |attr.c_cursor|number||N|光标颜色|
 |attr.c|number||N|背景颜色|
+|attr.radius|number||N|背景圆角半径|
 |attr.content|string||N|文本内容|
 |attr.content_blank|string||N|文本内容为空时，显示的默认文本|
 |attr.content_filter|string||N|过滤字符，非content_filter将被忽略|
@@ -2004,8 +2027,10 @@ end->cond1
 |attr.c_clk|number||N|按下时的颜色|
 |attr.c_content|boolean||N|文本颜色|
 |attr.opt|number||N|选中行文字对应文本集合中的序号|
-|attr.content|number||N|文本集合，每行使用"\n"分隔|
-|attr.res|number||N|另一侧的图片|
+|attr.c_slt_content|number||N|选中文本的颜色|
+|attr.radius|number||N|背景的圆角半径|
+|attr.content|string||N|文本集合，每行使用"\n"分隔|
+|attr.res|string||N|另一侧的图片|
 |action|table||N|控件动作|
 |action.bind|table||N|动作绑定列表|
 |action.bind.change|string||N|选项改变时，绑定controller中的函数名|
