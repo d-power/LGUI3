@@ -1,3 +1,25 @@
+2023-02-27
+1. 处理只缓存单张图片时,出现的异常问题.
+2. 修复缩放图片多次被监听的问题.
+3. 图片文件后缀不区分大小写。
+4. 添加设置 cache_size_max 的接口。
+5. 修复list初始select参数未设置时,点击会界面卡死的问题。
+6. 修复屏保时间从0设置为其他时,未生效的问题.
+7. 修复btnm控件set_data时死机的BUG
+8. btnm 控件添加 pad_x, pad_y 用于调节按键背景的填充宽度以及高度
+9. 处理特殊情况下颜色混合时,坐标偏移的问题
+10. 优化存在动画页面, 销毁common页面慢的问题
+11. 修复存在动画页面, drawer 控件上按键效果显示异常的问题
+12. list 添加 btn_fit 属性, 用于设置选项按键的宽高的fit属性
+13. slider 控件增加 res_knob 属性. 可将旋钮替换成图片。
+14. list 子控件 TEXT 添加 pad_x, pad_y 用于设置左右,上下的填充长度
+15. 生效aimg控件set_data设置times属性时,重置循环次数
+16. btnm 添加属性 inner,用于调节按键之间的距离
+17. clock 控件添加属性 hour_offset_x,hour_offset_y,min_offset_x,min_offset_y,sec_offset_x,sec_offset_y 用于调整时钟图片的旋转中心
+18. 添加公共属性 dis_scroll_propagation, 用于禁用当前控件的滑动传递功能
+19. list 子控件添加 pad_x, pad_y 用于调节文本背景的填充宽度以及高度
+20. page 控件添加属性 color_edge 用于设置控件到达最高或最低位置时,显示类似圆圈效果的颜色
+
 2022-05-18:
 1. 修复在父tab控件上直接创建list和page控件时,销毁页面报错的问题.
 2. 增加list控件属性:
