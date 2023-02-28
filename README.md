@@ -1335,7 +1335,7 @@ end->cond1
 |attr.mode|number||N|list 右边滚动条的模式|
 |attr.radius|number||N|list 背景圆角半径|
 |attr.radius_btn|number||N|list内部按键的圆角半径。|
-|attr.select|number||N|list单选模式下,当前选中的选项.(取值从1开始)|
+|attr.select|number||N|list单选模式下,当前选中的选项.(取值从0开始)|
 |attr.single|boolean||N|是否为单选模式 (true:单选 false:多选)|
 |attr.h_line|number||Y|列表中，每一行的高度(滑动方位为纵向时生效,生效时必填)|
 |attr.w_line|number||Y|列表中，每一行的宽度(滑动方位为横向时生效,生效时必填)|
