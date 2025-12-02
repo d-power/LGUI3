@@ -14,9 +14,9 @@ Bug report: liuzhengzhong@d-power.com.cn
 local env =
 {
     -- 工程的绝对路径
-    path        = "Z:/Desktop/GitHub/LGUI3",
+    path        = arg[1],
     -- 依赖c库的路径
-    cpath       = "winlib",
+    cpath       = "clib_linux",
     -- 字库
     ttf         = "MSYH2.TTF",
     -- framebuffer节点
